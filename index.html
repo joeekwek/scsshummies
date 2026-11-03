@@ -202,14 +202,12 @@ button {
         <h1>The Curious Case of the Missing Duck</h1>
 
         <p class="intro">
-            Something unusual has happened in our school garden.
-            Three ducks usually roam around the garden, but today,
-            one of them is missing!
-        </p>
-
-        <p>
-            Where could it have gone? What happened before it disappeared?
-            And how can we piece together the clues?
+          Put on your detective hat! One of the school's ducks, Mochi, has vanished 😱
+            Your only piece of information: there are webbed footprints on the ground
+            near Mochi's enclosure in the garden, ending at the nearby drain...
+            
+            Use your curiosity and join our Humanities mystery adventure — explore clues,
+            make smart guesses, and crack the code 🕵️‍♂️
         </p>
 
         <p>
@@ -293,7 +291,7 @@ button {
         <button class="primary" onclick="restartQuiz()">INVESTIGATE AGAIN ↻</button>
 
         <p class="small-note">
-            Thank you for taking part in our Humanities mystery challenge!
+            Congratulations on QUACKING the case! 🕵️‍♂️
         </p>
 
     </div>
@@ -311,73 +309,78 @@ button {
 // G = Geography
 // H = History
 // S = Social Studies
-// A = All-Rounder
 
 const questions = [
 
+  const questions = [
+
+    // ELEMENT 1: SPARKING CURIOSITY
+
     {
-        stage: "1. ASK",
-        question: "What would you want to find out first?",
+        stage: "1. SPARKING CURIOSITY",
+        question: "Mochi is missing!! What are you MOST CURIOUS to find out?",
         options: [
-            { text: "Where was the duck last spotted around the school?", category: "G" },
-            { text: "When was the duck last seen, and what happened before that?", category: "H" },
-            { text: "What do different people think happened to the duck?", category: "S" },
-            { text: "Could a combination of different clues help explain what happened?", category: "A" }
+            { text: "Where could Mochi have gone?", category: "G" },
+            { text: "When was Mochi last seen?", category: "H" },
+            { text: "Did anything happen in school that might have affected Mochi?", category: "S" },
         ]
     },
 
     {
-        stage: "2. INVESTIGATE",
-        question: "Which clue would you examine first?",
+        stage: "1. SPARKING CURIOSITY",
+        question: "The detective in you decides to investigate further. Which question would you most want to explore?",
         options: [
-            { text: "A map showing the different areas of the school garden", category: "G" },
-            { text: "Previous records of when the ducks were spotted", category: "H" },
-            { text: "Interviews with students and staff who know the ducks", category: "S" },
-            { text: "All the available clues to build a clearer picture", category: "A" }
+            { text: "Are there particular areas in school where Mochi is more likely to be found?", category: "G" },
+            { text: "What do previous sightings tell us about when Mochi usually appears?", category: "H" },
+            { text: "Were there any changes in school that might have led to Mochi's disappearance?", category: "S" },
+        ]
+    },
+
+    // ELEMENT 2: GATHERING DATA
+
+    {
+        stage: "2. GATHERING DATA",
+        question: "You are ready to investigate! Which source of information would you find most useful?",
+        options: [
+            { text: "A map of the school's green areas, such as the garden", category: "G" },
+            { text: "CCTV records of the garden leading up to Mochi's last seen time", category: "H" },
+            { text: "Interviews with students who visit Mochi everyday during recess", category: "S" },
         ]
     },
 
     {
-        stage: "3. INVESTIGATE",
-        question: "Whose account would you want to hear?",
+        stage: "2. GATHERING DATA",
+        question: "You have gathered some information. What would you do next to strengthen your investigation?",
         options: [
-            { text: "Someone who regularly observes the ducks around the garden", category: "G" },
-            { text: "Someone who remembers when the duck was last seen", category: "H" },
-            { text: "Different members of the school community", category: "S" },
-            { text: "Several people who can provide different pieces of information", category: "A" }
+            { text: "Observe different areas to look for Mochi's possible water or food sources", category: "G" },
+            { text: "Check CCTV records of nearby areas", category: "H" },
+            { text: "Speak to more members of the school community to hear their accounts", category: "S" },
         ]
     },
 
+    // ELEMENT 3: EXERCISING REASONING
+
     {
-        stage: "4. ANALYSE",
-        question: "You receive two different accounts of where the duck was last seen. What would you do?",
+        stage: "3. EXERCISING REASONING",
+        question: "You discover two different accounts of where the duck was last seen. How would you make sense of the information?",
         options: [
-            { text: "Compare the locations mentioned and look for possible patterns", category: "G" },
-            { text: "Check the timeline of events to see which account fits", category: "H" },
-            { text: "Consider why the two people might have different accounts", category: "S" },
-            { text: "Compare both accounts with the other available evidence", category: "A" }
+            { text: "Compare the locations mentioned and consider whether there are any spatial patterns", category: "G" },
+            { text: "Compare the timings of the sightings to establish which account fits the timeline", category: "H" },
+            { text: "Consider why the two people might have different accounts or perspectives", category: "S" },
+            { text: "Compare both accounts with other available evidence before deciding what is most convincing", category: "A" }
         ]
     },
 
-    {
-        stage: "5. CONCLUDE",
-        question: "Which explanation would you find most convincing?",
-        options: [
-            { text: "The duck may have moved to another part of the school grounds", category: "G" },
-            { text: "The duck may have left earlier than people initially thought", category: "H" },
-            { text: "The duck may have responded to something happening around it", category: "S" },
-            { text: "Several factors may have contributed to the duck's disappearance", category: "A" }
-        ]
-    },
+    // ELEMENT 4: REFLECTIVE THINKING
 
     {
-        stage: "6. REFLECT",
-        question: "What do you think makes a good investigator?",
+        stage: "4. REFLECTIVE THINKING",
+        question: "After completing your investigation, what would you reflect on most?",
         options: [
-            { text: "Being able to identify patterns and connections between places", category: "G" },
-            { text: "Being able to piece together events using past evidence", category: "H" },
-            { text: "Being able to understand different viewpoints before making a judgement", category: "S" },
-            { text: "Being able to bring different pieces of evidence together", category: "A" }
+            { text: "Whether considering different locations helped me understand where the duck might have gone", category: "G" },
+            { text: "Whether the information I gathered helped me piece together what happened", category: "H" },
+            { text: "Whether considering different viewpoints helped me avoid making assumptions", category: "S" },
+            { text: "Whether combining different sources of information gave me a more complete understanding of the mystery", category: "A" }
         ]
     }
 
