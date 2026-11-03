@@ -1,314 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Curious Case of the Missing Duck</title>
+<h1>The Curious Case of the Missing Duck</h1>
 
-<style>
-* {
-    box-sizing: border-box;
-}
+<p class="intro">
+            Something unusual has happened in our school garden.
+            Three ducks usually roam around the garden, but today,
+            one of them is missing!
+        </p>
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f1e8;
-    color: #26352d;
-    line-height: 1.6;
-}
-
-.container {
-    max-width: 760px;
-    margin: 35px auto;
-    padding: 20px;
-}
-
-.card {
-    background: white;
-    padding: 32px;
-    border-radius: 18px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-}
-
-.badge {
-    display: inline-block;
-    background: #e3eedf;
-    color: #315b3c;
-    padding: 6px 13px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-h1 {
-    font-size: 2.2rem;
-    line-height: 1.2;
-    margin: 18px 0 12px;
-    color: #254b36;
-}
-
-h2 {
-    color: #254b36;
-    margin-top: 10px;
-}
-
-.intro {
-    font-size: 1.05rem;
-}
-
-.duck {
-    font-size: 4rem;
-    margin: 10px 0;
-}
-
-button {
-    border: none;
-    border-radius: 10px;
-    padding: 13px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.primary {
-    background: #315b3c;
-    color: white;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.primary:hover {
-    background: #23452d;
-}
-
-.option {
-    display: block;
-    width: 100%;
-    text-align: left;
-    background: #f4f6f1;
-    color: #26352d;
-    border: 2px solid #e1e7dd;
-    margin: 12px 0;
-    padding: 15px;
-    font-weight: normal;
-}
-
-.option:hover {
-    border-color: #628b68;
-    background: #edf4e9;
-}
-
-.option.selected {
-    border-color: #315b3c;
-    background: #e3eedf;
-}
-
-.progress {
-    height: 9px;
-    background: #e5e8e1;
-    border-radius: 10px;
-    margin: 18px 0 25px;
-    overflow: hidden;
-}
-
-.progress-bar {
-    height: 100%;
-    width: 0%;
-    background: #6d9b6c;
-    transition: width 0.3s;
-}
-
-.question-number {
-    color: #64806a;
-    font-weight: bold;
-    font-size: 0.9rem;
-}
-
-.question {
-    font-size: 1.35rem;
-    font-weight: bold;
-    margin: 10px 0 20px;
-}
-
-.result-icon {
-    font-size: 4rem;
-    margin: 10px 0;
-}
-
-.result-title {
-    font-size: 2rem;
-    color: #315b3c;
-    margin: 5px 0;
-}
-
-.result-box {
-    background: #f0f5ed;
-    border-left: 5px solid #6d9b6c;
-    padding: 16px;
-    border-radius: 8px;
-    margin: 20px 0;
-}
-
-.small-note {
-    color: #68736a;
-    font-size: 0.9rem;
-}
-
-.hidden {
-    display: none;
-}
-
-.footer {
-    text-align: center;
-    font-size: 0.85rem;
-    color: #718074;
-    margin: 20px 0;
-}
-
-@media (max-width: 600px) {
-    .container {
-        margin: 10px auto;
-        padding: 12px;
-    }
-
-    .card {
-        padding: 23px;
-    }
-
-    h1 {
-        font-size: 1.8rem;
-    }
-
-    .question {
-        font-size: 1.2rem;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-    <!-- INTRODUCTION -->
-    <div class="card" id="intro">
-        <span class="badge">HUMANITIES MYSTERY CHALLENGE</span>
-
-        <div class="duck">🦆</div>
-
-        <h1>The Curious Case of the Missing Duck</h1>
-
-        <p class="intro">
+        <p>
+            Where could it have gone? What happened before it disappeared?
+            And how can we piece together the clues?
           Put on your detective hat! One of the school's ducks, Mochi, has vanished 😱
             Your only piece of information: there are webbed footprints on the ground
             near Mochi's enclosure in the garden, ending at the nearby drain...
             
             Use your curiosity and join our Humanities mystery adventure — explore clues,
             make smart guesses, and crack the code 🕵️‍♂️
-        </p>
+</p>
 
-        <p>
-            Your mission is to investigate the mystery. Answer six questions
-            based on how you would approach the investigation.
-        </p>
+<p>
+@@ -293,7 +291,7 @@ <h2>How does this connect to Humanities?</h2>
+<button class="primary" onclick="restartQuiz()">INVESTIGATE AGAIN ↻</button>
 
-        <div class="result-box">
-            <strong>🔍 Your mission:</strong><br>
-            Think like a Humanities investigator! There are no right or
-            wrong answers. Choose the option that best reflects how you
-            would investigate the mystery.
-        </div>
-
-        <p class="small-note">Estimated time: 3–5 minutes</p>
-
-        <button class="primary" onclick="startQuiz()">START INVESTIGATING →</button>
-    </div>
-
-
-    <!-- QUIZ -->
-    <div class="card hidden" id="quiz">
-
-        <span class="badge">THE INVESTIGATION</span>
-
-        <div class="progress">
-            <div class="progress-bar" id="progressBar"></div>
-        </div>
-
-        <div class="question-number" id="questionNumber"></div>
-
-        <div class="question" id="questionText"></div>
-
-        <div id="options"></div>
-
-        <button class="primary" id="nextButton" onclick="nextQuestion()" disabled>
-            NEXT →
-        </button>
-
-    </div>
-
-
-    <!-- RESULT -->
-    <div class="card hidden" id="result">
-
-        <span class="badge">CASE FILE COMPLETE</span>
-
-        <div class="result-icon" id="resultIcon"></div>
-
-        <h1>Your Investigator Profile</h1>
-
-        <div class="result-title" id="resultTitle"></div>
-
-        <p id="resultDescription"></p>
-
-        <div class="result-box">
-            <h3>What does this say about you?</h3>
-            <p id="subjectConnection"></p>
-        </div>
-
-        <h2>How does this connect to Humanities?</h2>
-
-        <p>
-            Humanities encourages us to ask questions, investigate information,
-            analyse evidence and develop conclusions.
-        </p>
-
-        <p>
-            Geographers, historians and Social Studies students may approach
-            questions differently, but they all use inquiry to understand
-            the world around them.
-        </p>
-
-        <div class="result-box">
-            <strong>💡 Remember:</strong><br>
-            Your result reflects the investigative approach you preferred
-            in this quiz. It does not mean you can only be good at one
-            Humanities subject!
-        </div>
-
-        <button class="primary" onclick="restartQuiz()">INVESTIGATE AGAIN ↻</button>
-
-        <p class="small-note">
+<p class="small-note">
+            Thank you for taking part in our Humanities mystery challenge!
             Congratulations on QUACKING the case! 🕵️‍♂️
-        </p>
-
-    </div>
-
-    <div class="footer">
-        Humanities Department | Inquiry-Based Learning
-    </div>
+</p>
 
 </div>
-
-
-<script>
-
-// Each answer is assigned one point to a category:
+@@ -311,73 +309,78 @@ <h2>How does this connect to Humanities?</h2>
 // G = Geography
 // H = History
 // S = Social Studies
+// A = All-Rounder
 
 const questions = [
 
@@ -316,246 +39,106 @@ const questions = [
 
     // ELEMENT 1: SPARKING CURIOSITY
 
-    {
+{
+        stage: "1. ASK",
+        question: "What would you want to find out first?",
         stage: "1. SPARKING CURIOSITY",
         question: "Mochi is missing!! What are you MOST CURIOUS to find out?",
-        options: [
+options: [
+            { text: "Where was the duck last spotted around the school?", category: "G" },
+            { text: "When was the duck last seen, and what happened before that?", category: "H" },
+            { text: "What do different people think happened to the duck?", category: "S" },
+            { text: "Could a combination of different clues help explain what happened?", category: "A" }
             { text: "Where could Mochi have gone?", category: "G" },
             { text: "When was Mochi last seen?", category: "H" },
             { text: "Did anything happen in school that might have affected Mochi?", category: "S" },
-        ]
-    },
+]
+},
 
-    {
+{
+        stage: "2. INVESTIGATE",
+        question: "Which clue would you examine first?",
         stage: "1. SPARKING CURIOSITY",
         question: "The detective in you decides to investigate further. Which question would you most want to explore?",
-        options: [
+options: [
+            { text: "A map showing the different areas of the school garden", category: "G" },
+            { text: "Previous records of when the ducks were spotted", category: "H" },
+            { text: "Interviews with students and staff who know the ducks", category: "S" },
+            { text: "All the available clues to build a clearer picture", category: "A" }
             { text: "Are there particular areas in school where Mochi is more likely to be found?", category: "G" },
             { text: "What do previous sightings tell us about when Mochi usually appears?", category: "H" },
             { text: "Were there any changes in school that might have led to Mochi's disappearance?", category: "S" },
-        ]
-    },
+]
+},
 
     // ELEMENT 2: GATHERING DATA
 
-    {
+{
+        stage: "3. INVESTIGATE",
+        question: "Whose account would you want to hear?",
         stage: "2. GATHERING DATA",
         question: "You are ready to investigate! Which source of information would you find most useful?",
-        options: [
+options: [
+            { text: "Someone who regularly observes the ducks around the garden", category: "G" },
+            { text: "Someone who remembers when the duck was last seen", category: "H" },
+            { text: "Different members of the school community", category: "S" },
+            { text: "Several people who can provide different pieces of information", category: "A" }
             { text: "A map of the school's green areas, such as the garden", category: "G" },
             { text: "CCTV records of the garden leading up to Mochi's last seen time", category: "H" },
             { text: "Interviews with students who visit Mochi everyday during recess", category: "S" },
-        ]
-    },
+]
+},
 
-    {
+{
+        stage: "4. ANALYSE",
+        question: "You receive two different accounts of where the duck was last seen. What would you do?",
         stage: "2. GATHERING DATA",
         question: "You have gathered some information. What would you do next to strengthen your investigation?",
-        options: [
+options: [
+            { text: "Compare the locations mentioned and look for possible patterns", category: "G" },
+            { text: "Check the timeline of events to see which account fits", category: "H" },
+            { text: "Consider why the two people might have different accounts", category: "S" },
+            { text: "Compare both accounts with the other available evidence", category: "A" }
             { text: "Observe different areas to look for Mochi's possible water or food sources", category: "G" },
             { text: "Check CCTV records of nearby areas", category: "H" },
             { text: "Speak to more members of the school community to hear their accounts", category: "S" },
-        ]
-    },
+]
+},
 
     // ELEMENT 3: EXERCISING REASONING
 
-    {
+{
+        stage: "5. CONCLUDE",
+        question: "Which explanation would you find most convincing?",
         stage: "3. EXERCISING REASONING",
         question: "You discover two different accounts of where the duck was last seen. How would you make sense of the information?",
-        options: [
+options: [
+            { text: "The duck may have moved to another part of the school grounds", category: "G" },
+            { text: "The duck may have left earlier than people initially thought", category: "H" },
+            { text: "The duck may have responded to something happening around it", category: "S" },
+            { text: "Several factors may have contributed to the duck's disappearance", category: "A" }
             { text: "Compare the locations mentioned and consider whether there are any spatial patterns", category: "G" },
             { text: "Compare the timings of the sightings to establish which account fits the timeline", category: "H" },
             { text: "Consider why the two people might have different accounts or perspectives", category: "S" },
             { text: "Compare both accounts with other available evidence before deciding what is most convincing", category: "A" }
-        ]
-    },
+]
+},
 
     // ELEMENT 4: REFLECTIVE THINKING
 
-    {
+{
+        stage: "6. REFLECT",
+        question: "What do you think makes a good investigator?",
         stage: "4. REFLECTIVE THINKING",
         question: "After completing your investigation, what would you reflect on most?",
-        options: [
+options: [
+            { text: "Being able to identify patterns and connections between places", category: "G" },
+            { text: "Being able to piece together events using past evidence", category: "H" },
+            { text: "Being able to understand different viewpoints before making a judgement", category: "S" },
+            { text: "Being able to bring different pieces of evidence together", category: "A" }
             { text: "Whether considering different locations helped me understand where the duck might have gone", category: "G" },
             { text: "Whether the information I gathered helped me piece together what happened", category: "H" },
             { text: "Whether considering different viewpoints helped me avoid making assumptions", category: "S" },
             { text: "Whether combining different sources of information gave me a more complete understanding of the mystery", category: "A" }
-        ]
-    }
-
-];
-
-const profiles = {
-    G: {
-        title: "Spatial Sleuth",
-        icon: "🗺️",
-        description: "You are curious about places and patterns. You like exploring where things happen and how people interact with their surroundings.",
-        connection: "You think like a geographer! Geography investigates places, spatial patterns and relationships between people and the environment."
-    },
-
-    H: {
-        title: "Evidence Detective",
-        icon: "🔎",
-        description: "You enjoy piecing together information and figuring out what happened. You pay attention to timelines, records and evidence.",
-        connection: "You think like a historian! History involves examining sources, investigating past events and using evidence to understand what happened."
-    },
-
-    S: {
-        title: "Perspective Pro",
-        icon: "💬",
-        description: "You are interested in people and their viewpoints. You consider why people may think differently and how their experiences shape their perspectives.",
-        connection: "You think like a Social Studies investigator! Social Studies explores societal issues, different perspectives and how people make decisions."
-    },
-
-    A: {
-        title: "Master Investigator",
-        icon: "🕵️",
-        description: "You like connecting different pieces of information. You prefer looking at the bigger picture rather than relying on just one clue.",
-        connection: "You bring together different Humanities approaches! You consider places, past events, people and different perspectives to develop a fuller understanding."
-    }
-};
-
-let currentQuestion = 0;
-let answers = [];
-let selectedCategory = null;
-
-
-function startQuiz() {
-    document.getElementById("intro").classList.add("hidden");
-    document.getElementById("quiz").classList.remove("hidden");
-
-    currentQuestion = 0;
-    answers = [];
-
-    showQuestion();
+]
 }
-
-
-function showQuestion() {
-
-    const q = questions[currentQuestion];
-
-    document.getElementById("questionNumber").textContent =
-        q.stage + " — QUESTION " + (currentQuestion + 1) + " OF " + questions.length;
-
-    document.getElementById("questionText").textContent = q.question;
-
-    document.getElementById("progressBar").style.width =
-        ((currentQuestion) / questions.length * 100) + "%";
-
-    const optionsContainer = document.getElementById("options");
-    optionsContainer.innerHTML = "";
-
-    selectedCategory = null;
-
-    document.getElementById("nextButton").disabled = true;
-
-    q.options.forEach((option, index) => {
-
-        const button = document.createElement("button");
-
-        button.className = "option";
-        button.textContent = option.text;
-
-        button.onclick = function() {
-
-            document.querySelectorAll(".option").forEach(btn => {
-                btn.classList.remove("selected");
-            });
-
-            button.classList.add("selected");
-
-            selectedCategory = option.category;
-
-            document.getElementById("nextButton").disabled = false;
-        };
-
-        optionsContainer.appendChild(button);
-    });
-
-    document.getElementById("nextButton").textContent =
-        currentQuestion === questions.length - 1 ? "REVEAL MY RESULT →" : "NEXT →";
-}
-
-
-function nextQuestion() {
-
-    if (selectedCategory === null) return;
-
-    answers.push(selectedCategory);
-
-    currentQuestion++;
-
-    if (currentQuestion < questions.length) {
-        showQuestion();
-    } else {
-        showResult();
-    }
-}
-
-
-function showResult() {
-
-    const scores = {
-        G: 0,
-        H: 0,
-        S: 0,
-        A: 0
-    };
-
-    answers.forEach(category => {
-        scores[category]++;
-    });
-
-    // Find the highest score.
-    const highestSubjectScore = Math.max(scores.G, scores.H, scores.S);
-
-    let resultCategory;
-
-    // All-Rounder wins if its score is at least as high as
-    // the highest individual subject score.
-    if (scores.A >= highestSubjectScore) {
-        resultCategory = "A";
-    } else {
-
-        // If two or more subject categories tie, award All-Rounder.
-        const subjectWinners = ["G", "H", "S"].filter(
-            category => scores[category] === highestSubjectScore
-        );
-
-        if (subjectWinners.length > 1) {
-            resultCategory = "A";
-        } else {
-            resultCategory = subjectWinners[0];
-        }
-    }
-
-    const profile = profiles[resultCategory];
-
-    document.getElementById("quiz").classList.add("hidden");
-    document.getElementById("result").classList.remove("hidden");
-
-    document.getElementById("progressBar").style.width = "100%";
-
-    document.getElementById("resultIcon").textContent = profile.icon;
-    document.getElementById("resultTitle").textContent = profile.title;
-    document.getElementById("resultDescription").textContent = profile.description;
-    document.getElementById("subjectConnection").textContent = profile.connection;
-}
-
-
-function restartQuiz() {
-
-    document.getElementById("result").classList.add("hidden");
-    document.getElementById("intro").classList.remove("hidden");
-
-    currentQuestion = 0;
-    answers = [];
-    selectedCategory = null;
-}
-
-</script>
-
-</body>
-</html>
