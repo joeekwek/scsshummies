@@ -253,6 +253,31 @@
 
     </div>
 
+    <div id="reveal-screen" class="hidden">
+    <div class="duck">🦆</div>
+
+    <h1>CASE CLOSED!</h1>
+    <h2>YOU FOUND MOCHI!</h2>
+
+    <p class="intro">
+        After following the clues, you finally spot Mochi
+        waddling around the vegetable garden near the football field!
+    </p>
+
+    <p class="intro">
+        Seeds are scattered across the ground, and Mochi seems
+        perfectly content exploring its new surroundings.
+    </p>
+
+    <p class="intro">
+        It seems that the construction noise may have startled
+        Mochi, causing it to wander away from its usual enclosure.
+    </p>
+
+    <button class="primary" onclick="continueAfterReveal()">
+        CONTINUE TO REFLECTION →
+    </button>
+</div>
 
     <!-- RESULTS SCREEN -->
 
@@ -328,7 +353,7 @@ const questions = [
 
     {
         stage: "1. SPARKING CURIOSITY",
-        question: "The detective in you decides to investigate further. Which question would you most want to explore?",
+        question: "Your inner detective decides to investigate further. Which question would you most want to explore?",
         options: [
             { text: "Are there particular areas in school where Mochi is more likely to be found?", category: "G" },
             { text: "What do previous sightings tell us about when Mochi usually appears?", category: "H" },
@@ -351,9 +376,9 @@ const questions = [
 
     {
         stage: "2. GATHERING DATA",
-        question: "You discover webbed footprints leading away from the garden. What would you do next to gather more information?",
+        question: "As you walk, you discover webbed footprints leading away from the garden! What would you do next?",
         options: [
-            { text: "Explore the areas where the footprints appear to lead to", category: "G" },
+            { text: "Follow the footprints to find out where they lead to", category: "G" },
             { text: "Find out when the footprints were first spotted", category: "H" },
             { text: "Ask students and staff if they noticed anything unusual near the garden", category: "S" }
         ]
@@ -364,29 +389,26 @@ const questions = [
 
     {
         stage: "3. EXERCISING REASONING",
-        question: "You discover that construction work recently began near the garden. Loud noises were also heard on the day Mochi disappeared. How would you make sense of these clues?",
+        question: "You have gathered 3 more clues: construction work recently began near the garden; a small trail of seeds was spotted along the field; and a few feathers were found near the back gate. What do you think happened to Mochi?",
         options: [
-            { text: "Examine the locations of the construction site, garden and nearby areas for possible connections", category: "G" },
-            { text: "Compare the timing of the construction work, loud noises and Mochi's disappearance", category: "H" },
-            { text: "Consider how the construction work and noise might have affected Mochi's behaviour", category: "S" }
+            { text: "Mochi was startled by the construction noise and waddled away from the garden towards a quieter area", category: "G" },
+            { text: "A construction worker captured Mochi, leaving behind its feathers", category: "H" },
+            { text: "Students fed Mochi seeds, so it followed them and waddled away from the garden", category: "S" }
         ]
     },
 
-
+    
     // ELEMENT 4: REFLECTIVE THINKING
 
     {
         stage: "4. REFLECTIVE THINKING",
-        question: "After completing your investigation, what would you reflect on most?",
+        question: "After solving the mystery and finding Mochi, how do you feel about your investigation?",
         options: [
-            { text: "Whether considering different locations helped me understand where Mochi might have gone", category: "G" },
-            { text: "Whether the information I gathered helped me piece together what happened", category: "H" },
-            { text: "Whether considering different viewpoints helped me avoid making assumptions", category: "S" }
+            { text: "I feel excited that my curiosity about the surroundings helped me find Mochi!", category: "G" },
+            { text: "I feel accomplished that I pieced together the clues and events to solve the mystery!", category: "H" },
+            { text: "I feel relieved that I considered how changes around the garden might have affected Mochi!", category: "S" }
         ]
     }
-
-];
-
 
 // INVESTIGATOR PROFILES
 
@@ -514,28 +536,32 @@ function showQuestion() {
 // MOVE TO NEXT QUESTION
 
 function nextQuestion() {
+    if (selectedCategory === null) return;
 
-    if (selectedCategory === null) {
+    scores[selectedCategory]++;
+    currentQuestion++;
+
+    // Show the reveal screen after Question 6
+    if (currentQuestion === questions.length - 1) {
+        document.getElementById("quiz-screen").classList.add("hidden");
+        document.getElementById("reveal-screen").classList.remove("hidden");
         return;
     }
 
-    scores[selectedCategory]++;
-
-    currentQuestion++;
-
     if (currentQuestion < questions.length) {
-
         showQuestion();
-
     } else {
-
         showResult();
-
     }
-
 }
 
+function continueAfterReveal() {
+    document.getElementById("reveal-screen").classList.add("hidden");
+    document.getElementById("quiz-screen").classList.remove("hidden");
 
+    showQuestion();
+}
+    
 // DISPLAY RESULTS
 
 function showResult() {
