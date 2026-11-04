@@ -410,6 +410,8 @@ const questions = [
         ]
     }
 
+];    
+
 // INVESTIGATOR PROFILES
 
 const profiles = {
@@ -463,12 +465,14 @@ function startQuiz() {
         S: 0
     };
 
+    selectedCategory = null;
+
     document.getElementById("intro-screen").classList.add("hidden");
     document.getElementById("result-screen").classList.add("hidden");
+    document.getElementById("reveal-screen").classList.add("hidden");
     document.getElementById("quiz-screen").classList.remove("hidden");
 
     showQuestion();
-
 }
 
 
@@ -643,6 +647,7 @@ function restartQuiz() {
 
     document.getElementById("result-screen").classList.add("hidden");
     document.getElementById("quiz-screen").classList.add("hidden");
+    document.getElementById("reveal-screen").classList.add("hidden");
     document.getElementById("intro-screen").classList.remove("hidden");
 
     currentQuestion = 0;
@@ -653,6 +658,7 @@ function restartQuiz() {
         S: 0
     };
 
+    selectedCategory = null;
 }
 
 </script>
