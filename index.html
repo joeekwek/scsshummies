@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -153,6 +152,15 @@
             color: #315c45;
         }
 
+        .result-image {
+            display: block;
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 15px;
+        }
+
         .hidden {
             display: none;
         }
@@ -253,31 +261,37 @@
 
     </div>
 
+
+    <!-- REVEAL SCREEN -->
+
     <div id="reveal-screen" class="hidden">
-    <div class="duck">🦆</div>
 
-    <h1>CASE CLOSED!</h1>
-    <h2>YOU FOUND MOCHI!</h2>
+        <div class="duck">🦆</div>
 
-    <p class="intro">
-        After following the clues, you finally spot Mochi
-        waddling around the vegetable garden near the football field!
-    </p>
+        <h1>CASE CLOSED!</h1>
+        <h2>YOU FOUND MOCHI!</h2>
 
-    <p class="intro">
-        Seeds are scattered across the ground, and Mochi seems
-        perfectly content exploring its new surroundings.
-    </p>
+        <p class="intro">
+            After following the clues, you finally spot Mochi
+            waddling around the vegetable garden near the football field!
+        </p>
 
-    <p class="intro">
-        It seems that the construction noise may have startled
-        Mochi, causing it to wander away from its usual enclosure.
-    </p>
+        <p class="intro">
+            Seeds are scattered across the ground, and Mochi seems
+            perfectly content exploring its new surroundings.
+        </p>
 
-    <button class="primary" onclick="continueAfterReveal()">
-        CONTINUE TO REFLECTION →
-    </button>
-</div>
+        <p class="intro">
+            It seems that the construction noise may have startled
+            Mochi, causing it to wander away from its usual enclosure.
+        </p>
+
+        <button class="primary" onclick="continueAfterReveal()">
+            CONTINUE TO REFLECTION →
+        </button>
+
+    </div>
+
 
     <!-- RESULTS SCREEN -->
 
@@ -336,6 +350,9 @@
 // G = Geography
 // H = History
 // S = Social Studies
+
+
+// QUIZ QUESTIONS
 
 const questions = [
 
@@ -397,7 +414,7 @@ const questions = [
         ]
     },
 
-    
+
     // ELEMENT 4: REFLECTIVE THINKING
 
     {
@@ -410,7 +427,8 @@ const questions = [
         ]
     }
 
-];    
+];
+
 
 // INVESTIGATOR PROFILES
 
@@ -418,20 +436,26 @@ const profiles = {
 
     G: {
         name: "🗺️ Earth Explorer Otter",
+        image: "images/earth explorer otter.png",
         subject: "Geography",
         description: "You are curious about places and the environment. You love exploring the world around you!",
+        connection: "Geography helps us understand places, environments and the relationships between people and their surroundings."
     },
 
     H: {
         name: "📜 Time Traveller Otter",
+        image: "images/time traveller otter.png",
         subject: "History",
         description: "You enjoy uncovering clues from the past and learning from what happened!",
+        connection: "History helps us understand the past, examine evidence and learn from events that have happened."
     },
 
     S: {
         name: "💬 Community Otter",
+        image: "images/community otter.png",
         subject: "Social Studies",
         description: "You are interested in people, their experiences and views!",
+        connection: "Social Studies helps us understand different perspectives, people's experiences and how we can live together in society."
     }
 
 };
@@ -537,15 +561,19 @@ function showQuestion() {
 // MOVE TO NEXT QUESTION
 
 function nextQuestion() {
+
     if (selectedCategory === null) return;
 
     scores[selectedCategory]++;
     currentQuestion++;
 
-    // Show the reveal screen after Question 6
+    // Show the reveal screen after Question 5
+
     if (currentQuestion === questions.length - 1) {
+
         document.getElementById("quiz-screen").classList.add("hidden");
         document.getElementById("reveal-screen").classList.remove("hidden");
+
         return;
     }
 
@@ -554,15 +582,22 @@ function nextQuestion() {
     } else {
         showResult();
     }
+
 }
 
+
+// CONTINUE AFTER REVEAL
+
 function continueAfterReveal() {
+
     document.getElementById("reveal-screen").classList.add("hidden");
     document.getElementById("quiz-screen").classList.remove("hidden");
 
     showQuestion();
+
 }
-    
+
+
 // DISPLAY RESULTS
 
 function showResult() {
@@ -584,26 +619,48 @@ function showResult() {
 
     let resultHTML = "";
 
+    // SINGLE WINNING PROFILE
+
     if (winners.length === 1) {
 
         const profile = profiles[winners[0]];
 
         resultHTML += `
             <div class="profile">
+
                 <h3>${profile.name}</h3>
-                <p><strong>Your strongest investigative approach: ${profile.subject}</strong></p>
+
+                <img
+                    src="${profile.image}"
+                    class="result-image"
+                    alt="${profile.subject} otter"
+                >
+
+                <p>
+                    <strong>Your strongest investigative approach: ${profile.subject}</strong>
+                </p>
+
                 <p>${profile.description}</p>
-                <p><strong>How this connects to Humanities:</strong><br>
-                ${profile.connection}</p>
+
+                <p>
+                    <strong>How this connects to Humanities:</strong><br>
+                    ${profile.connection}
+                </p>
+
             </div>
         `;
 
     } else {
 
+        // TIED PROFILES
+
         resultHTML += `
             <div class="profile">
+
                 <h3>Your investigation combines different perspectives!</h3>
+
                 <p>You showed an equal preference for the following approaches:</p>
+
             </div>
         `;
 
@@ -613,10 +670,22 @@ function showResult() {
 
             resultHTML += `
                 <div class="profile">
+
                     <h3>${profile.name}</h3>
+
+                    <img
+                        src="${profile.image}"
+                        class="result-image"
+                        alt="${profile.subject} otter"
+                    >
+
                     <p>${profile.description}</p>
-                    <p><strong>How this connects to Humanities:</strong><br>
-                    ${profile.connection}</p>
+
+                    <p>
+                        <strong>How this connects to Humanities:</strong><br>
+                        ${profile.connection}
+                    </p>
+
                 </div>
             `;
 
@@ -624,12 +693,18 @@ function showResult() {
 
     }
 
+
+    // DISPLAY SCORES
+
     resultHTML += `
         <div class="result-score">
+
             <strong>Your investigation scores</strong><br>
+
             Geography: ${scores.G}<br>
             History: ${scores.H}<br>
             Social Studies: ${scores.S}
+
         </div>
     `;
 
@@ -656,6 +731,7 @@ function restartQuiz() {
     };
 
     selectedCategory = null;
+
 }
 
 </script>
